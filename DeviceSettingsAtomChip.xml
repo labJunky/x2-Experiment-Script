@@ -1,0 +1,1870 @@
+<?xml version="1.0" encoding="UTF-8" standalone='yes'?>
+<device_settings>
+  <file_name>DeviceSettingsAtomChip.xml</file_name>
+  <experiment_name>AtomChip</experiment_name>
+  <version>v4</version>
+  <info>
+    This database contains the settings for the hardware used
+    in the AtomChip experiment. The channel_config element contains the
+    configuration for each channel. Its has a name attribute, which
+    names the channel it describes. Note that you can use comments
+    LOG:
+  </info>
+  <device_list>
+    <instrument type="ao">Ao8a</instrument>
+    <instrument type="ao">Ao8b</instrument>
+    <instrument type="ao">HMP2030</instrument>
+    <instrument type="ethernet">K2602a</instrument>
+    <instrument type="ethernet">K2602b</instrument>
+    <instrument type="ethernet">K2602c</instrument>
+    <instrument type="dio">Dio64</instrument>
+    <instrument type="rf">SpinCoreDDS0</instrument>
+    <instrument type="rf">SpinCoreDDS1</instrument>
+    <instrument type="rf">CQTDDS0</instrument>
+  </device_list>
+  <labels>
+    <label>MOT_Loading_Time</label>
+    <label>Molasses_Time</label>
+    <label>MOT_Compression</label>
+    <label>Dipole_Hold_Time</label>
+    <label>Magnetic_Hold_Time</label>
+    <label>Time_Of_Flight</label>
+    <label>Exposure_Time</label>
+    <label>Trap_Modulation_Time</label>
+    <label>Camera_Readout_delay</label>
+    <label>Camera_Image_Shift_delay</label>
+    <label>Shutter_On</label>
+    <label>Shutter_Off</label>
+  </labels>
+  <stages>
+    <comment>
+      The colour of the stage is that shown in the script editor. It is a Hexidecimal number encoding a labview colour.
+      The encoding is RRGGBB therefore red is FF0000, blue is 00FF00, and green is 0000FF.
+    </comment>
+    <stage>
+      <name>Initialise</name>
+      <colour>FF7449</colour>
+    </stage>
+    <stage>
+      <name>MOT</name>
+      <colour>9DECFD</colour>
+    </stage>
+    <stage>
+      <name>Molasses</name>
+      <colour>99FF</colour>
+    </stage>
+    <stage>
+      <name>Optical Pumping</name>
+      <colour>FFFF80</colour>
+    </stage>
+    <stage>
+      <name>Magnetic Trap</name>
+      <colour>80FF00</colour>
+    </stage>
+    <stage>
+      <name>Optical Trap</name>
+      <colour>FEA9F8</colour>
+    </stage>
+    <stage>
+      <name>Evaporation</name>
+      <colour>A6FFA6</colour>
+    </stage>
+    <stage>
+      <name>Manipulation</name>
+      <colour>EDFFB8</colour>
+    </stage>
+    <stage>
+      <name>Switch On</name>
+      <colour>CC663B</colour>
+    </stage>
+    <stage>
+      <name>Switch Off</name>
+      <colour>897927</colour>
+    </stage>
+    <stage>
+      <name>Absorption Imaging</name>
+      <colour>B544EA</colour>
+    </stage>
+    <stage>
+      <name>Fluorescence Imaging</name>
+      <colour>49FCFC</colour>
+    </stage>
+    <stage>
+      <name>Shut Down</name>
+      <colour>36BC3F</colour>
+    </stage>
+    <stage>
+      <name>Imaging Delay</name>
+      <colour>F99E48</colour>
+    </stage>
+  </stages>
+  <ao name="Ao8a">
+    <device_name>NI_PXI_6733</device_name>
+    <capabilities>
+      <channel_number type="analog">8</channel_number>
+      <channel_number type="digital_output">8</channel_number>
+      <channel_number type="digital_input">8</channel_number>
+      <range units="volts">&#194;&#177;10</range>
+      <range units="ref_volts">&#194;&#177;11</range>
+      <dio_levels>TTL</dio_levels>
+      <triggering>
+        <start>PFI[0_9]</start>
+        <start>PXI[0_6]</start>
+        <clock>PFI[0_9]</clock>
+        <clock>PXI[0_6]</clock>
+      </triggering>
+      <resolution type="bits">16</resolution>
+    </capabilities>
+    <config>
+      <channels_inUse>
+        <name type="unrestricted">Ao8a_Ao_00@Cooling_Detuning</name>
+        <name type="unrestricted">Ao8a_Ao_01@133MHz_AOM</name>
+        <name type="unrestricted">Ao8a_Ao_02@TiS AOM1 RF Offset</name>
+        <name type="unrestricted">Ao8a_Ao_03@Optical_Pumping</name>
+        <name type="unrestricted">Ao8a_Ao_04@TiS Amplitude</name>
+        <name type="unrestricted">Ao8a_Ao_05@TiS Frequency</name>
+        <name type="unrestricted">Ao8a_Ao_06@DFB_EOM_Switch</name>
+        <name type="unrestricted">Ao8a_Ao_07@ImagingFibreAOM</name>
+      </channels_inUse>
+      <triggering_inUse>
+        <start_trigger>none</start_trigger>
+        <clock>Ao8a_PFI_08</clock>
+      </triggering_inUse>
+      <range_inUse units="volts">
+        <min>-10</min>
+        <max>10</max>
+      </range_inUse>
+      <channel_config name="Ao8a_Ao_00">
+        <mapping>
+          <mappedTo type="field">Cooling_Detuning</mappedTo>
+          <states>
+            <resonance>0</resonance>
+            <off>20</off>
+          </states>
+          <units>MHz(detuning)</units>
+          <calibration>
+            <gradient units="MHzPerVolts">0.0603</gradient>
+            <offset units="volts">4.11</offset>
+          </calibration>
+          <safe_state units="MHz">resonance</safe_state>
+        </mapping>
+        <channel_type>ao</channel_type>
+        <comment>Cooling detuning is the voltage supplied to the vco on the double pass 210 MHz AOM. It sets the overall detuning of the laser. User enters detuning in MHz</comment>
+      </channel_config>
+      <channel_config name="Ao8a_Ao_01">
+        <mapping>
+          <mappedTo type="field">133MHz_AOM</mappedTo>
+          <states>
+            <on>6.85</on>
+            <off>0</off>
+          </states>
+          <units>V</units>
+          <calibration>
+            <gradient units="volts">1</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>ao</channel_type>
+      </channel_config>
+      <channel_config name="Ao8a_Ao_02">
+        <mapping>
+          <mappedTo type="field">TiS AOM1 RF Offset</mappedTo>
+          <states>
+            <on>1.5</on>
+            <Mod>0.77</Mod>
+            <off>0</off>
+          </states>
+          <units>V</units>
+          <calibration>
+            <gradient units="volts">1</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>ao</channel_type>
+      </channel_config>
+      <channel_config name="Ao8a_Ao_03">
+        <mapping>
+          <mappedTo type="field">Optical_Pumping</mappedTo>
+          <states>
+            <resonance>75</resonance>
+            <off>8</off>
+          </states>
+          <units>MHz</units>
+          <calibration>
+            <gradient units="VoltsPerMHz">0.2662</gradient>
+            <offset units="volts">-12.09</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>ao</channel_type>
+        <comment>User enters frequency in MHz</comment>
+      </channel_config>
+      <channel_config name="Ao8a_Ao_04">
+        <mapping>
+          <mappedTo type="field">TiS Amplitude</mappedTo>
+          <states>
+            <on>3.7</on>
+            <off>0</off>
+          </states>
+          <units>V</units>
+          <calibration>
+            <gradient units="volts">1</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="volts">on</safe_state>
+        </mapping>
+        <channel_type>ao</channel_type>
+      </channel_config>
+      <channel_config name="Ao8a_Ao_05">
+        <mapping>
+          <mappedTo type="field">TiS Frequency</mappedTo>
+            <states>
+              <resonance>80</resonance>
+              <off>10</off>
+            </states>
+            <units>MHz</units>
+            <calibration>
+              <gradient units="VoltsPerMHz">0.2662</gradient>
+              <offset units="volts">-11.89</offset>
+            </calibration>
+            <safe_state units="volts">resonance</safe_state>
+          </mapping>
+          <channel_type>ao</channel_type>
+          <comment>User enters frequency in MHz</comment>
+        </channel_config>
+      <channel_config name="Ao8a_Ao_06">
+        <mapping>
+          <mappedTo type="field">DFB_EOM_Switch</mappedTo>
+          <states>
+            <on>5</on>
+            <off>0</off>
+          </states>
+          <units>V</units>
+          <calibration>
+            <gradient units="volts">1</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="volts">on</safe_state>
+        </mapping>
+        <channel_type>ao</channel_type>
+      </channel_config>
+      <channel_config name="Ao8a_Ao_07">
+        <mapping>
+          <mappedTo type="field">ImagingFibreAOM</mappedTo>
+          <states>
+            <resonance>74</resonance>
+            <off>8</off>
+          </states>
+          <units>MHz</units>
+          <calibration>
+            <gradient units="VoltsPerMHz">0.2662</gradient>
+            <offset units="volts">-12.09</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>ao</channel_type>
+        <comment>User enters frequency in MHz</comment>
+      </channel_config>
+    </config>
+  </ao>
+  <ao name="Ao8b">
+    <device_name>NI_PXI_6733</device_name>
+    <capabilities>
+      <channel_number type="analog">8</channel_number>
+      <channel_number type="digital_output">8</channel_number>
+      <channel_number type="digital_input">8</channel_number>
+      <range units="volts">&#194;&#177;10</range>
+      <range units="ref_volts">&#194;&#177;11</range>
+      <dio_levels>TTL</dio_levels>
+      <triggering>
+        <start>PFI[0_9]</start>
+        <start>PXI[0_6]</start>
+        <clock>PFI[0_9]</clock>
+        <clock>PXI[0_6]</clock>
+      </triggering>
+      <resolution type="bits">16</resolution>
+    </capabilities>
+    <config>
+      <channels_inUse>
+        <name type="unrestricted">Ao8b_Ao_00@analogB0</name>
+        <name type="unrestricted">Ao8b_Ao_01@Ioffe_Coil</name>
+        <name type="unrestricted">Ao8b_Ao_02@UpDown_Coil</name>
+        <name type="unrestricted">Ao8b_Ao_03@Bias_Coil</name>
+        <name type="unrestricted">Ao8b_Ao_04@U_Wire</name>
+        <name type="unrestricted">Ao8b_Ao_05@analogB5</name>
+        <name type="unrestricted">Ao8b_Ao_06@analogB6</name>
+        <name type="unrestricted">Ao8b_Ao_07@analogB7</name>
+      </channels_inUse>
+      <triggering_inUse>
+        <start_trigger>none</start_trigger>
+        <clock>Ao8b_PFI_08</clock>
+      </triggering_inUse>
+      <range_inUse units="volts">
+        <min>-10</min>
+        <max>10</max>
+      </range_inUse>
+      <channel_config name="Ao8b_Ao_00">
+        <mapping>
+          <mappedTo type="field">analogB0</mappedTo>
+          <states>
+            <on>1</on>
+            <off>0</off>
+          </states>
+          <units>V</units>
+          <calibration>
+            <gradient units="volts">1</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>ao</channel_type>
+      </channel_config>
+      <channel_config name="Ao8b_Ao_01">
+        <mapping>
+          <mappedTo type="field">Ioffe_Coil</mappedTo>
+          <states>
+            <on>0.06</on>
+            <centre>0.22</centre>
+            <chip>0.05</chip>
+            <off>0</off>
+          </states>
+          <units>Amps</units>
+          <calibration>
+            <gradient units="ampsPerVolts">-0.0775</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="Amps">off</safe_state>
+        </mapping>
+        <channel_type>ao</channel_type>
+      </channel_config>
+      <channel_config name="Ao8b_Ao_02">
+        <mapping>
+          <mappedTo type="field">UpDown_Coil</mappedTo>
+          <states>
+            <on>0.35</on>
+            <centre>1.37</centre>
+            <chip>0.2</chip>
+            <off>0</off>
+          </states>
+          <units>Amps</units>
+          <calibration>
+            <gradient units="ampsPerVolts">-0.0444</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="Amps">off</safe_state>
+        </mapping>
+        <channel_type>ao</channel_type>
+      </channel_config>
+      <channel_config name="Ao8b_Ao_03">
+        <mapping>
+          <mappedTo type="field">Bias_Coil</mappedTo>
+          <states>
+            <on>1.11</on>
+            <centre>1.15</centre>
+            <chip>0.35</chip>
+            <off>0</off>
+          </states>
+          <units>V</units>
+          <calibration>
+            <gradient units="volts">-0.036</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>ao</channel_type>
+      </channel_config>
+      <channel_config name="Ao8b_Ao_04">
+        <mapping>
+          <mappedTo type="field">U_Wire</mappedTo>
+          <states>
+            <on>24.5</on>
+            <centre>14.5</centre>
+            <off>0</off>
+          </states>
+          <units>Amps</units>
+          <calibration>
+            <gradient units="ampsPerVolts">-0.030</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="Amps">off</safe_state>
+        </mapping>
+        <channel_type>ao</channel_type>
+      </channel_config>
+      <channel_config name="Ao8b_Ao_05">
+        <mapping>
+          <mappedTo type="field">analogB5</mappedTo>
+          <states>
+            <on>1</on>
+            <off>0</off>
+          </states>
+          <units>V</units>
+          <calibration>
+            <gradient units="volts">1</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>ao</channel_type>
+      </channel_config>
+      <channel_config name="Ao8b_Ao_06">
+        <mapping>
+          <mappedTo type="field">analogB6</mappedTo>
+          <states>
+            <on>1</on>
+            <off>0</off>
+          </states>
+          <units>V</units>
+          <calibration>
+            <gradient units="volts">1</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>ao</channel_type>
+      </channel_config>
+      <channel_config name="Ao8b_Ao_07">
+        <mapping>
+          <mappedTo type="field">analogB7</mappedTo>
+          <states>
+            <on>1</on>
+            <off>0</off>
+          </states>
+          <units>V</units>
+          <calibration>
+            <gradient units="volts">1</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>ao</channel_type>
+      </channel_config>
+    </config>
+  </ao>
+  <ao name="HMP2030">
+    <device_name>HMP2030</device_name>
+    <capabilities>
+      <channel_number type="analog">2</channel_number>
+      <channel_number type="digital_output">0</channel_number>
+      <channel_number type="digital_input">0</channel_number>
+      <range units="volts">&#194;&#177;32</range>
+    </capabilities>
+    <config>
+      <channels_inUse>
+        <name type="unrestricted">HMP2030_Ao_01@hmp2030_01</name>
+        <name type="unrestricted">HMP2030_Ao_02@dispenser</name>
+        <name type="unrestricted">HMP2030_Ao_03@hmp2030_03</name>
+      </channels_inUse>
+      <triggering_inUse>
+        <start_trigger>none</start_trigger>
+        <clock>HMP2030_timer</clock>
+      </triggering_inUse>
+      <range_inUse units="volts">
+        <min>-10</min>
+        <max>10</max>
+      </range_inUse>
+      <limits_inUse>
+        <channel_one>
+          <voltage_limit>2</voltage_limit>
+          <current_limit>1.5</current_limit>
+        </channel_one>
+        <channel_two>
+          <voltage_limit>2</voltage_limit>
+          <current_limit>5</current_limit>
+        </channel_two>
+        <channel_three>
+          <voltage_limit>2</voltage_limit>
+          <current_limit>5</current_limit>
+        </channel_three>
+      </limits_inUse>
+      <channel_config name="HMP2030_Ao_01">
+        <mapping>
+          <mappedTo type="ao">hmp2030_01</mappedTo>
+          <states>
+            <on>1</on>
+            <off>0</off>
+          </states>
+          <units>Volts</units>
+          <calibration>
+            <gradient units="voltsPerVolts">1</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="Volts">off</safe_state>
+        </mapping>
+        <channel_type>ao</channel_type>
+        <comment></comment>
+      </channel_config>
+      <channel_config name="HMP2030_Ao_02">
+        <mapping>
+          <mappedTo type="field">dispenser</mappedTo>
+          <states>
+            <constant>4.5</constant>
+            <on>4.2</on>
+            <warm>3.8</warm>
+             <off>0</off>
+          </states>
+          <units>Amps</units>
+          <calibration>
+            <gradient units="volts">1</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="volts">constant</safe_state>
+        </mapping>
+        <channel_type>ao</channel_type>
+      </channel_config>
+      <channel_config name="HMP2030_Ao_03">
+        <mapping>
+          <mappedTo type="field">hmp2030_03</mappedTo>
+          <states>
+            <on>0.5</on>
+            <off>0</off>
+          </states>
+          <units>Volts</units>
+          <calibration>
+            <gradient units="volts">1</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>ao</channel_type>
+      </channel_config>
+    </config>
+  </ao>
+  <ethernet name="K2602a">
+    <device_name>Keithley_2602</device_name>
+    <capabilities>
+      <channel_number type="analog">2</channel_number>
+      <channel_number type="digital_output">8</channel_number>
+      <channel_number type="digital_input">8</channel_number>
+      <range units="volts">&#194;&#177;40</range>
+      <dio_levels>TTL</dio_levels>
+      <triggering>
+        <start>internal</start>
+        <start>external</start>
+        <clock>internal</clock>
+        <clock>external</clock>
+      </triggering>
+      <resolution type="bits">16</resolution>
+    </capabilities>
+    <config>
+      <channels_inUse>
+        <name type="unrestricted">K2602a_Ao_00@keithleyA</name>
+        <name type="unrestricted">K2602a_Ao_01@keithleyB</name>
+      </channels_inUse>
+      <triggering_inUse>
+        <channel_zero>
+          <start_trigger>k2602a_trigger</start_trigger>
+          <clock>internal</clock>
+        </channel_zero>
+        <channel_one>
+          <start_trigger>internal</start_trigger>
+          <clock>internal</clock>
+        </channel_one>
+      </triggering_inUse>
+      <range_inUse units="volts">
+        <channel_zero>
+          <current>3</current>
+          <voltage>6</voltage>
+        </channel_zero>
+        <channel_one>
+          <current>3</current>
+          <voltage>6</voltage>
+        </channel_one>
+      </range_inUse>
+      <limits_inUse>
+        <channel_zero>
+          <voltage_limit>4.21</voltage_limit>
+          <current_limit>1.5</current_limit>
+        </channel_zero>
+        <channel_one>
+          <voltage_limit>4.35</voltage_limit>
+          <current_limit>1.5</current_limit>
+        </channel_one>
+      </limits_inUse>
+      <mode>
+        <channel_zero>current</channel_zero>
+        <channel_one>current</channel_one>
+      </mode>
+      <channel_config name="K2602a_Ao_00">
+        <mapping>
+          <mappedTo type="ethernet">keithleyA</mappedTo>
+          <states>
+            <ChipOn>1.4727</ChipOn>
+            <off>0</off>
+          </states>
+          <units>A</units>
+          <calibration>
+            <gradient units="volts">1</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>ethernet</channel_type>
+      </channel_config>
+      <channel_config name="K2602a_Ao_01">
+        <mapping>
+          <mappedTo type="ethernet">keithleyB</mappedTo>
+          <states>
+            <ZwireOn>1.4934</ZwireOn>
+            <off>0</off>
+          </states>
+          <units>A</units>
+          <calibration>
+            <gradient units="volts">1</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>ethernet</channel_type>
+      </channel_config>
+    </config>
+  </ethernet>
+  <ethernet name="K2602b">
+    <device_name>Keithley_2602</device_name>
+    <capabilities>
+      <channel_number type="analog">2</channel_number>
+      <channel_number type="digital_output">8</channel_number>
+      <channel_number type="digital_input">8</channel_number>
+      <range units="volts">&#194;&#177;40</range>
+      <dio_levels>TTL</dio_levels>
+      <triggering>
+        <start>internal</start>
+        <start>external</start>
+        <clock>internal</clock>
+        <clock>external</clock>
+      </triggering>
+      <resolution type="bits">16</resolution>
+    </capabilities>
+    <config>
+      <channels_inUse>
+        <name type="unrestricted">K2602b_Ao_00@keithleyC</name>
+        <name type="unrestricted">K2602b_Ao_01@keithleyD</name>
+      </channels_inUse>
+      <triggering_inUse>
+        <channel_zero>
+          <start_trigger>k2602b_trigger</start_trigger>
+          <clock>internal</clock>
+        </channel_zero>
+        <channel_one>
+          <start_trigger>k2602b_trigger</start_trigger>
+          <clock>none</clock>
+        </channel_one>
+      </triggering_inUse>
+      <range_inUse units="volts">
+        <channel_zero>
+          <current>3</current>
+          <voltage>6</voltage>
+        </channel_zero>
+        <channel_one>
+          <current>3</current>
+          <voltage>6</voltage>
+        </channel_one>
+      </range_inUse>
+      <limits_inUse>
+        <channel_zero>
+          <voltage_limit>4.21</voltage_limit>
+          <current_limit>1.0</current_limit>
+        </channel_zero>
+        <channel_one>
+          <voltage_limit>5</voltage_limit>
+          <current_limit>1.35</current_limit>
+        </channel_one>
+      </limits_inUse>
+      <mode>
+        <channel_zero>current</channel_zero>
+        <channel_one>current</channel_one>
+      </mode>
+      <channel_config name="K2602b_Ao_00">
+        <mapping>
+          <mappedTo type="ethernet">keithleyC</mappedTo>
+          <states>
+            <off>0</off>
+          </states>
+          <units>A</units>
+          <calibration>
+            <gradient units="volts">1</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>ethernet</channel_type>
+      </channel_config>
+      <channel_config name="K2602b_Ao_01">
+        <mapping>
+          <mappedTo type="ethernet">keithleyD</mappedTo>
+          <states>
+            <off>0</off>
+          </states>
+          <units>A</units>
+          <calibration>
+            <gradient units="volts">1</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>ethernet</channel_type>
+      </channel_config>
+    </config>
+  </ethernet>
+  <ethernet name="K2602c">
+    <device_name>Keithley_2602</device_name>
+    <capabilities>
+      <channel_number type="analog">2</channel_number>
+      <channel_number type="digital_output">8</channel_number>
+      <channel_number type="digital_input">8</channel_number>
+      <range units="volts">&#194;&#177;40</range>
+      <dio_levels>TTL</dio_levels>
+      <triggering>
+        <start>internal</start>
+        <start>external</start>
+        <clock>internal</clock>
+        <clock>external</clock>
+      </triggering>
+      <resolution type="bits">16</resolution>
+    </capabilities>
+    <config>
+      <channels_inUse>
+        <name type="unrestricted">K2602c_Ao_00@keithleyE</name>
+        <name type="unrestricted">K2602c_Ao_01@keithleyF</name>
+      </channels_inUse>
+      <triggering_inUse>
+        <channel_zero>
+          <start_trigger>k2602c_trigger</start_trigger>
+          <clock>internal</clock>
+        </channel_zero>
+        <channel_one>
+          <start_trigger>k2602c_trigger</start_trigger>
+          <clock>none</clock>
+        </channel_one>
+      </triggering_inUse>
+      <range_inUse units="volts">
+        <channel_zero>
+          <current>3</current>
+          <voltage>6</voltage>
+        </channel_zero>
+        <channel_one>
+          <current>3</current>
+          <voltage>6</voltage>
+        </channel_one>
+      </range_inUse>
+      <limits_inUse>
+        <channel_zero>
+          <voltage_limit>5</voltage_limit>
+          <current_limit>1.35</current_limit>
+        </channel_zero>
+        <channel_one>
+          <voltage_limit>5</voltage_limit>
+          <current_limit>1.35</current_limit>
+        </channel_one>
+      </limits_inUse>
+      <mode>
+        <channel_zero>current</channel_zero>
+        <channel_one>current</channel_one>
+      </mode>
+      <channel_config name="K2602c_Ao_00">
+        <mapping>
+          <mappedTo type="ethernet">keithleyE</mappedTo>
+          <states>
+            <off>0</off>
+          </states>
+          <units>A</units>
+          <calibration>
+            <gradient units="volts">1</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>ethernet</channel_type>
+      </channel_config>
+      <channel_config name="K2602c_Ao_01">
+        <mapping>
+          <mappedTo type="ethernet">keithleyF</mappedTo>
+          <states>
+            <off>0</off>
+          </states>
+          <units>A</units>
+          <calibration>
+            <gradient units="volts">1</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>ethernet</channel_type>
+      </channel_config>
+    </config>
+  </ethernet>
+
+  <ethernet name="K2602d">
+    <device_name>Keithley_2602</device_name>
+    <capabilities>
+      <channel_number type="analog">2</channel_number>
+      <channel_number type="digital_output">8</channel_number>
+      <channel_number type="digital_input">8</channel_number>
+      <range units="volts">&#194;&#177;40</range>
+      <dio_levels>TTL</dio_levels>
+      <triggering>
+        <start>internal</start>
+        <start>external</start>
+        <clock>internal</clock>
+        <clock>external</clock>
+      </triggering>
+      <resolution type="bits">16</resolution>
+    </capabilities>
+    <config>
+      <channels_inUse>
+        <name type="unrestricted">K2602d_Ao_00@keithleyG</name>
+        <name type="unrestricted">K2602d_Ao_01@keithleyH</name>
+      </channels_inUse>
+      <triggering_inUse>
+        <channel_zero>
+          <start_trigger>k2602d_trigger</start_trigger>
+          <clock>internal</clock>
+        </channel_zero>
+        <channel_one>
+          <start_trigger>k2602d_trigger</start_trigger>
+          <clock>none</clock>
+        </channel_one>
+      </triggering_inUse>
+      <range_inUse units="volts">
+        <channel_zero>
+          <current>3</current>
+          <voltage>6</voltage>
+        </channel_zero>
+        <channel_one>
+          <current>3</current>
+          <voltage>6</voltage>
+        </channel_one>
+      </range_inUse>
+      <limits_inUse>
+        <channel_zero>
+          <voltage_limit>5</voltage_limit>
+          <current_limit>1.35</current_limit>
+        </channel_zero>
+        <channel_one>
+          <voltage_limit>5</voltage_limit>
+          <current_limit>1.35</current_limit>
+        </channel_one>
+      </limits_inUse>
+      <mode>
+        <channel_zero>current</channel_zero>
+        <channel_one>current</channel_one>
+      </mode>
+      <channel_config name="K2602d_Ao_00">
+        <mapping>
+          <mappedTo type="ethernet">keithleyG</mappedTo>
+          <states>
+            <off>0</off>
+          </states>
+          <units>A</units>
+          <calibration>
+            <gradient units="volts">1</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>ethernet</channel_type>
+      </channel_config>
+      <channel_config name="K2602d_Ao_01">
+        <mapping>
+          <mappedTo type="ethernet">keithleyH</mappedTo>
+          <states>
+            <off>0</off>
+          </states>
+          <units>A</units>
+          <calibration>
+            <gradient units="volts">1</gradient>
+            <offset units="volts">0</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>ethernet</channel_type>
+      </channel_config>
+    </config>
+  </ethernet>
+  <dio name="Dio64">
+    <capabilities>
+      <channel_number type="digital">64</channel_number>
+      <triggering>
+        <start>Dio64_24</start>
+        <start>PXI_Trig_02</start>
+        <start>PXI_Star</start>
+        <start>internal</start>
+        <stop>Dio64_25</stop>
+        <stop>PXI_trig_03</stop>
+        <stop>PXI_Star</stop>
+        <stop>internal</stop>
+        <clock>internal</clock>
+        <clock>Dio64_20</clock>
+        <clock>PXI_Trig_00</clock>
+        <clock>PXI_Trig_07</clock>
+      </triggering>
+      <routings>
+        <routing>Dio64_10MHz to PXI_Trig_07</routing>
+        <routing>Dio64_Scan to Dio64_20</routing>
+        <routing>Dio64_Scan to PXI_Trig_00</routing>
+        <routing>Dio64_Start to PXI_Trig_02</routing>
+        <routing>Dio64_13 to PXI_Trig_01</routing>
+        <routing>Dio64_14 to PXI_Trig_05</routing>
+        <routing>Dio64_15 to PXI_Trig_06</routing>
+      </routings>
+    </capabilities>
+    <config>
+      <channels_inUse>
+        <name type="unrestricted">Dio64_Do_00@Pixelfly_trigger</name>
+        <name type="unrestricted">Dio64_Do_01@UpDown_Switch</name>
+        <name type="unrestricted">Dio64_Do_02@Cooling_Shutter</name>
+        <name type="unrestricted">Dio64_Do_03@Repump_Shutter</name>
+        <name type="unrestricted">Dio64_Do_04@Keithley3390_trigger</name>
+        <name type="unrestricted">Dio64_Do_05@SpinCoreDDS0_rf_trigger</name>
+        <name type="unrestricted">Dio64_Do_06@Imaging_Shutter</name>
+        <name type="unrestricted">Dio64_Do_07@SpinCoreDDS1_rf_trigger</name>
+        <name type="unrestricted">Dio64_Do_08@Pixis_trigger</name>
+        <name type="unrestricted">Dio64_Do_09@Bias_Switch</name>
+        <name type="restricted">Dio64_Do_10@Ao8a_PFI_08</name>
+        <name type="restricted">Dio64_Do_11@Ao8b_PFI_08</name>
+        <name type="unrestricted">Dio64_Do_12@Ioffe_Coil_Switch</name>
+        <name type="unrestricted">Dio64_Do_13@k2602a_trigger</name>
+        <name type="unrestricted">Dio64_Do_14@CQTDDS0_rf_trigger</name>
+        <name type="unrestricted">Dio64_Do_15@Pixis_Ext_Shutter</name>
+        <name type="unrestricted">Dio64_Do_16@ProEM_trigger</name>
+        <name type="unrestricted">Dio64_Do_17@k2602b_trigger</name>
+        <name type="unrestricted">Dio64_Do_18@DFB_Shutter</name>
+        <name type="unrestricted">Dio64_Do_19@k2602c_trigger</name>
+        <name type="unrestricted">Dio64_Do_20@k2602d_trigger</name>
+        <name type="unrestricted">Dio64_Do_31@GuppyPro_trigger</name>
+      </channels_inUse>
+      <triggering_inUse>
+        <start_trigger>internal</start_trigger>
+        <clock>internal</clock>
+      </triggering_inUse>        
+      <channel_config name="Dio64_Do_00">
+        <mapping>
+          <mappedTo type="TTL">Pixelfly_trigger</mappedTo>
+          <states>
+            <on>high</on>
+            <off>low</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="">N-A</gradient>
+            <offset units="">N-A</offset>
+          </calibration>
+          <safe_state units="">off</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>pulse</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">1000</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      <channel_config name="Dio64_Do_01">
+        <mapping>
+          <mappedTo type="TTL">UpDown_Switch</mappedTo>
+          <states>
+            <on>high</on>
+            <off>low</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="">N-A</gradient>
+            <offset units="">N-A</offset>
+          </calibration>
+          <safe_state units="">on</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>changeValue</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">N-A</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      <channel_config name="Dio64_Do_02">
+        <mapping>
+          <mappedTo type="TTL">Cooling_Shutter</mappedTo>
+          <states>
+            <on>low</on>
+            <off>high</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="">N-A</gradient>
+            <offset units="">N-A</offset>
+          </calibration>
+          <safe_state units="">on</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>changeValue</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">N-A</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      <channel_config name="Dio64_Do_03">
+        <mapping>
+          <mappedTo type="TTL">Repump_Shutter</mappedTo>
+          <states>
+            <on>low</on>
+            <off>high</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="">N-A</gradient>
+            <offset units="">N-A</offset>
+          </calibration>
+          <safe_state units="">on</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>changeValue</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">N-A</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      <channel_config name="Dio64_Do_04">
+        <mapping>
+          <mappedTo type="TTL">Keithley3390_trigger</mappedTo>
+          <states>
+            <on>high</on>
+            <off>low</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="">N-A</gradient>
+            <offset units="">N-A</offset>
+          </calibration>
+          <safe_state units="">off</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>pulse</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">100</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      <channel_config name="Dio64_Do_05">
+        <mapping>
+          <mappedTo type="pulse">SpinCoreDDS0_rf_trigger</mappedTo>
+          <states>
+            <trigger>high</trigger>
+            <off>low</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="volts">N-A</gradient>
+            <offset units="volts">N-A</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>changeValue</type>
+          <levels>
+            <high units="volts">0</high>
+            <low units="volts">5</low>
+          </levels>
+          <width units="us">10</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      <channel_config name="Dio64_Do_06">
+        <mapping>
+          <mappedTo type="TTL">Imaging_Shutter</mappedTo>
+          <states>
+            <on>low</on>
+            <off>high</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="volts">N-A</gradient>
+            <offset units="volts">N-A</offset>
+          </calibration>
+          <safe_state units="volts">on</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>changeValue</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">10</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      <channel_config name="Dio64_Do_07">
+        <mapping>
+          <mappedTo type="pulse">SpinCoreDDS1_rf_trigger</mappedTo>
+          <states>
+            <trigger>high</trigger>
+            <off>low</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="volts">N-A</gradient>
+            <offset units="volts">N-A</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>changeValue</type>
+          <levels>
+            <high units="volts">0</high>
+            <low units="volts">5</low>
+          </levels>
+          <width units="us">10</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      <channel_config name="Dio64_Do_08">
+        <mapping>
+          <mappedTo type="TTL">Pixis_trigger</mappedTo>
+          <states>
+            <on>high</on>
+            <off>low</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="">N-A</gradient>
+            <offset units="">N-A</offset>
+          </calibration>
+          <safe_state units="">off</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>pulse</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">50</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      <channel_config name="Dio64_Do_09">
+        <mapping>
+          <mappedTo type="TTL">Bias_Switch</mappedTo>
+          <states>
+            <on>high</on>
+            <off>low</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="">N-A</gradient>
+            <offset units="">N-A</offset>
+          </calibration>
+          <safe_state units="">on</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>changeValue</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">10</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      <channel_config name="Dio64_Do_10">
+        <mapping>
+          <mappedTo type="clock">Ao8a_PFI_08</mappedTo>
+          <states>
+            <off>low</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="volts">N-A</gradient>
+            <offset units="volts">N-A</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>pulse</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">0.5</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      <channel_config name="Dio64_Do_11">
+        <mapping>
+          <mappedTo type="clock">Ao8b_PFI_08</mappedTo>
+          <states>
+            <off>low</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="volts">N-A</gradient>
+            <offset units="volts">N-A</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>pulse</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">0.5</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      <channel_config name="Dio64_Do_13">
+        <mapping>
+          <mappedTo type="trigger">k2602a_trigger</mappedTo>
+          <states>
+            <on>high</on>
+            <off>low</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="volts">N-A</gradient>
+            <offset units="volts">N-A</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>pulse</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">10000</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      <channel_config name="Dio64_Do_12">
+        <mapping>
+          <mappedTo type="TTL">Ioffe_Coil_Switch</mappedTo>
+          <states>
+            <on>high</on>
+            <off>low</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="">N-A</gradient>
+            <offset units="">N-A</offset>
+          </calibration>
+          <safe_state units="">on</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>changeValue</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">N-A</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      <channel_config name="Dio64_Do_14">
+        <mapping>
+          <mappedTo type="pulse">CQTDDS0_rf_trigger</mappedTo>
+          <states>
+            <trigger>high</trigger>
+            <off>low</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="volts">N-A</gradient>
+            <offset units="volts">N-A</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>changeValue</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">10</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      <channel_config name="Dio64_Do_15">
+        <mapping>
+          <mappedTo type="TTL">Pixis_Ext_Shutter</mappedTo>
+          <states>
+            <on>high</on>
+            <off>low</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="">N-A</gradient>
+            <offset units="">N-A</offset>
+          </calibration>
+          <safe_state units="">off</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>pulse</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">1000</width>
+          <delay units="us">-8000</delay>
+        </digital_config>
+      </channel_config>
+      <channel_config name="Dio64_Do_16">
+        <mapping>
+          <mappedTo type="TTL">ProEM_trigger</mappedTo>
+          <states>
+            <on>high</on>
+            <off>low</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="">N-A</gradient>
+            <offset units="">N-A</offset>
+          </calibration>
+          <safe_state units="">off</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>pulse</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">500</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      <channel_config name="Dio64_Do_17">
+        <mapping>
+          <mappedTo type="trigger">k2602b_trigger</mappedTo>
+          <states>
+            <on>high</on>
+            <off>low</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="volts">N-A</gradient>
+            <offset units="volts">N-A</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>pulse</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">10000</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      <channel_config name="Dio64_Do_18">
+        <mapping>
+          <mappedTo type="TTL">DFB_Shutter</mappedTo>
+          <states>
+            <on>low</on>
+            <off>high</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="">N-A</gradient>
+            <offset units="">N-A</offset>
+          </calibration>
+          <safe_state units="">on</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>changeValue</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">N-A</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      <channel_config name="Dio64_Do_19">
+        <mapping>
+          <mappedTo type="trigger">k2602c_trigger</mappedTo>
+          <states>
+            <on>high</on>
+            <off>low</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="volts">N-A</gradient>
+            <offset units="volts">N-A</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>pulse</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">10000</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      
+      <channel_config name="Dio64_Do_20">
+        <mapping>
+          <mappedTo type="trigger">k2602d_trigger</mappedTo>
+          <states>
+            <on>high</on>
+            <off>low</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="volts">N-A</gradient>
+            <offset units="volts">N-A</offset>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>pulse</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">10000</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+      
+      <channel_config name="Dio64_Do_31">
+        <mapping>
+        <mappedTo type="TTL">GuppyPro_trigger</mappedTo>
+          <states>
+            <on>high</on>
+            <off>low</off>
+          </states>
+          <units>N-A</units>
+          <calibration>
+            <gradient units="">N-A</gradient>
+            <offset units="">N-A</offset>
+          </calibration>
+          <safe_state units="">off</safe_state>
+        </mapping>
+        <channel_type>do</channel_type>
+        <digital_config>
+          <type>pulse</type>
+          <levels>
+            <high units="volts">5</high>
+            <low units="volts">0</low>
+          </levels>
+          <width units="us">10</width>
+          <delay units="us">0</delay>
+        </digital_config>
+      </channel_config>
+    </config>
+  </dio>
+  <rf name="SpinCoreDDS0">
+    <device_name>SpinCore_DDSII_300</device_name>
+    <capabilities>
+      <channel_number type="analog">2</channel_number>
+      <range units="volts">1.2</range>
+      <dio_levels>TTL</dio_levels>
+      <triggering>
+        <start>SpinCoreDDS0_rf_trigger</start>
+        <start>internal</start>
+        <comment>SpinCoreDDS0_rf_trigger is currently on Dio64_Do_12. internal uses a software trigger</comment>
+      </triggering>
+      <resolution type="bits">14</resolution>
+    </capabilities>
+    <config>
+      <channels_inUse>
+        <name type="unrestricted">SpinCoreDDS0_rf_00@Repump_AOM</name>
+        <name type="unrestricted">SpinCoreDDS0_rf_01@Cooling_AOM</name>
+      </channels_inUse>
+      <triggering_inUse>
+        <start_trigger>SpinCoreDDS0_rf_trigger</start_trigger>
+        <clock>internal</clock>
+      </triggering_inUse>
+      <range_inUse units="volts">
+        <min>-0.6</min>
+        <max>0.6</max>
+      </range_inUse>
+      <channel_config name="SpinCoreDDS0_rf_00">
+        <mapping>
+          <mappedTo type="rf">Repump_AOM</mappedTo>
+          <states>
+            <repump_cooling>
+              <frequency>80</frequency>
+              <amplitude>0.66</amplitude>
+              <phase>0</phase>
+            </repump_cooling>
+            <off>
+              <frequency>1</frequency>
+              <amplitude>0</amplitude>
+              <phase>0</phase>
+            </off>
+          </states>
+          <units>
+            <frequency>MHz</frequency>
+            <amplitude>N-A (0-1)</amplitude>
+            <phase>Degrees</phase>
+          </units>
+          <calibration>
+            <frequency>
+              <gradient units="">1</gradient>
+              <offset units="volts">0</offset>
+            </frequency>
+            <amplitude>
+              <gradient units="volts">1</gradient>
+              <offset units="volts">0</offset>
+            </amplitude>
+            <phase>
+              <gradient units="degrees">1</gradient>
+              <offset units="degrees">0</offset>
+            </phase>
+          </calibration>
+          <safe_state units="volts">repump_cooling</safe_state>
+        </mapping>
+        <channel_type>rf</channel_type>
+      </channel_config>
+      <channel_config name="SpinCoreDDS0_rf_01">
+        <mapping>
+          <mappedTo type="rf">Cooling_AOM</mappedTo>
+          <states>
+            <cooling>
+              <frequency>85</frequency>
+              <amplitude>0.26</amplitude>
+              <phase>0</phase>
+            </cooling>
+            <off>
+              <frequency>1</frequency>
+              <amplitude>0</amplitude>
+              <phase>0</phase>
+            </off>
+          </states>
+          <units>
+            <frequency>Hertz</frequency>
+            <amplitude>volts</amplitude>
+            <phase>degrees</phase>
+          </units>
+          <calibration>
+            <frequency>
+              <gradient units="">1</gradient>
+              <offset units="volts">0</offset>
+            </frequency>
+            <amplitude>
+              <gradient units="volts">1</gradient>
+              <offset units="volts">0</offset>
+            </amplitude>
+            <phase>
+              <gradient units="degrees">1</gradient>
+              <offset units="degrees">0</offset>
+            </phase>
+          </calibration>
+          <safe_state units="volts">cooling</safe_state>
+        </mapping>
+        <channel_type>rf</channel_type>
+      </channel_config>
+    </config>
+  </rf>
+  <rf name="SpinCoreDDS1">
+    <device_name>SpinCore_DDSII_300</device_name>
+    <capabilities>
+      <channel_number type="analog">2</channel_number>
+      <range units="volts">1.2</range>
+      <dio_levels>TTL</dio_levels>
+      <triggering>
+        <start>SpinCoreDDS1_rf_trigger</start>
+        <start>internal</start>
+        <comment>SpinCoreDDS1_rf_trigger is on Dio64_Do_13. internal uses a software trigger</comment>
+      </triggering>
+      <resolution type="bits">14</resolution>
+    </capabilities>
+    <config>
+      <channels_inUse>
+        <name type="unrestricted">SpinCoreDDS1_rf_00@Imaging_Aom</name>
+        <name type="unrestricted">SpinCoreDDS1_rf_01@133MHz_Test</name>
+      </channels_inUse>
+      <triggering_inUse>
+        <start_trigger>SpinCoreDDS1_rf_trigger</start_trigger>
+        <clock>internal</clock>
+      </triggering_inUse>
+      <range_inUse units="volts">
+        <min>-0.6</min>
+        <max>0.6</max>
+      </range_inUse>
+      <channel_config name="SpinCoreDDS1_rf_00">
+        <mapping>
+          <mappedTo type="rf">Imaging_Aom</mappedTo>
+          <states>
+            <on>
+              <frequency>74</frequency>
+              <amplitude>1</amplitude>
+              <phase>0</phase>
+            </on>
+            <off>
+              <frequency>1</frequency>
+              <amplitude>0</amplitude>
+              <phase>0</phase>
+            </off>
+          </states>
+          <units>
+            <frequency>MHz</frequency>
+            <amplitude>N-A (0-1)</amplitude>
+            <phase>Degrees</phase>
+          </units>
+          <calibration>
+            <frequency>
+              <gradient units="">1</gradient>
+              <offset units="volts">0</offset>
+            </frequency>
+            <amplitude>
+              <gradient units="volts">1</gradient>
+              <offset units="volts">0</offset>
+            </amplitude>
+            <phase>
+              <gradient units="degrees">1</gradient>
+              <offset units="degrees">0</offset>
+            </phase>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>rf</channel_type>
+      </channel_config>
+      <channel_config name="SpinCoreDDS1_rf_01">
+        <mapping>
+          <mappedTo type="rf">133MHz_Test</mappedTo>
+          <states>
+            <off>
+              <frequency>1</frequency>
+              <amplitude>0</amplitude>
+              <phase>0</phase>
+            </off>
+            <on>
+              <frequency>133</frequency>
+              <amplitude>1</amplitude>
+              <phase>0</phase>
+            </on>
+          </states>
+          <units>
+            <frequency>MHz</frequency>
+            <amplitude>volts</amplitude>
+            <phase>degrees</phase>
+          </units>
+          <calibration>
+            <frequency>
+              <gradient units="">1</gradient>
+              <offset units="volts">0</offset>
+            </frequency>
+            <amplitude>
+              <gradient units="volts">1</gradient>
+              <offset units="volts">0</offset>
+            </amplitude>
+            <phase>
+              <gradient units="degrees">1</gradient>
+              <offset units="degrees">0</offset>
+            </phase>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>rf</channel_type>
+      </channel_config>
+    </config>
+  </rf>
+  <rf name="CQTDDS0">
+    <device_name>CQTDDS</device_name>
+    <capabilities>
+      <channel_number type="analog">2</channel_number>
+      <range units="volts">1</range>
+      <dio_levels>TTL</dio_levels>
+      <triggering>
+        <start>CQTDDS0_rf_trigger</start>
+        <start>internal</start>
+        <comment>CQTDDS0_rf_trigger is currently on Dio64_Do_12. internal uses a software trigger</comment>
+      </triggering>
+      <resolution type="bits">14</resolution>
+    </capabilities>
+    <config>
+      <channels_inUse>
+        <name type="unrestricted">CQTDDS0_rf_00@cDDS_00</name>
+        <name type="unrestricted">CQTDDS0_rf_01@cDDS_01</name>
+      </channels_inUse>
+      <triggering_inUse>
+        <start_trigger>internal</start_trigger>
+        <clock>CQTDDS0_rf_trigger</clock>
+      </triggering_inUse>
+      <range_inUse units="volts">
+        <min>-0.6</min>
+        <max>0.6</max>
+      </range_inUse>
+      <channel_config name="CQTDDS0_rf_00">
+        <mapping>
+          <mappedTo type="rf">cDDS_00</mappedTo>
+          <states>
+            <on>
+              <frequency>80</frequency>
+              <amplitude>1</amplitude>
+              <phase>0</phase>
+            </on>
+            <off>
+              <frequency>1</frequency>
+              <amplitude>0</amplitude>
+              <phase>0</phase>
+            </off>
+          </states>
+          <units>
+            <frequency>MHz</frequency>
+            <amplitude>N-A (0-1)</amplitude>
+            <phase>Degrees</phase>
+          </units>
+          <calibration>
+            <frequency>
+              <gradient units="">1</gradient>
+              <offset units="volts">0</offset>
+            </frequency>
+            <amplitude>
+              <gradient units="volts">1</gradient>
+              <offset units="volts">0</offset>
+            </amplitude>
+            <phase>
+              <gradient units="degrees">1</gradient>
+              <offset units="degrees">0</offset>
+            </phase>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>rf</channel_type>
+      </channel_config>
+      <channel_config name="CQTDDS0_rf_01">
+        <mapping>
+          <mappedTo type="rf">cDDS_01</mappedTo>
+          <states>
+            <on>
+              <frequency>85</frequency>
+              <amplitude>1</amplitude>
+              <phase>0</phase>
+            </on>
+            <off>
+              <frequency>1</frequency>
+              <amplitude>0</amplitude>
+              <phase>0</phase>
+            </off>
+          </states>
+          <units>
+            <frequency>Hertz</frequency>
+            <amplitude>volts</amplitude>
+            <phase>degrees</phase>
+          </units>
+          <calibration>
+            <frequency>
+              <gradient units="">1</gradient>
+              <offset units="volts">0</offset>
+            </frequency>
+            <amplitude>
+              <gradient units="volts">1</gradient>
+              <offset units="volts">0</offset>
+            </amplitude>
+            <phase>
+              <gradient units="degrees">1</gradient>
+              <offset units="degrees">0</offset>
+            </phase>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>rf</channel_type>
+      </channel_config>
+    </config>
+  </rf>
+  <rf name="k3390">
+    <device_name>Keithley_3390_AWG</device_name>
+    <capabilities>
+      <channel_number type="analog">1</channel_number>
+      <range units="volts">1.0</range>
+      <dio_levels>TTL</dio_levels>
+      <triggering>
+        <start>Keithley3390_trigger</start>
+        <start>internal</start>
+        <comment>Keithley3390_trigger is connected to Dio64_Do_04</comment>
+      </triggering>
+      <resolution type="bits">16</resolution>
+    </capabilities>
+    <config>
+      <channels_inUse>
+        <name type="unrestricted">k3390_rf_00@Trap_modulation</name>
+      </channels_inUse>
+      <triggering_inUse>
+        <start_trigger>Keithley3390_trigger</start_trigger>
+        <clock>internal</clock>
+      </triggering_inUse>
+      <range_inUse units="volts">
+        <min>-0.5</min>
+        <max>0.5</max>
+      </range_inUse>
+      <channel_config name="k3390_rf_00">
+        <mapping>
+          <mappedTo type="rf">Trap_modulation</mappedTo>
+          <states>
+            <on>
+              <frequency>0.024</frequency>
+              <amplitude>0.15</amplitude>
+              <phase>0</phase>
+            </on>
+            <off>
+              <frequency>0</frequency>
+              <amplitude>0</amplitude>
+              <phase>0</phase>
+            </off>
+          </states>
+          <units>
+            <frequency>MHz</frequency>
+            <amplitude>N-A (0-1)</amplitude>
+            <phase>Degrees</phase>
+          </units>
+          <calibration>
+            <frequency>
+              <gradient units="">1</gradient>
+              <offset units="volts">0</offset>
+            </frequency>
+            <amplitude>
+              <gradient units="volts">1</gradient>
+              <offset units="volts">0</offset>
+            </amplitude>
+            <phase>
+              <gradient units="degrees">1</gradient>
+              <offset units="degrees">0</offset>
+            </phase>
+          </calibration>
+          <safe_state units="volts">off</safe_state>
+        </mapping>
+        <channel_type>rf</channel_type>
+      </channel_config>
+    </config>
+  </rf>
+</device_settings>
